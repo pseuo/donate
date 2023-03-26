@@ -1,4 +1,5 @@
-# Playing-reward
+# donate
+
 一个打赏的小功能
 
 修改自 [donate-page](https://github.com/Kaiyuan/donate-page)
