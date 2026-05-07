@@ -1,30 +1,141 @@
-<!DOCTYPE html>
-<html lang="zh">
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
-	<meta charset="UTF-8">
-	<title>打赏</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
-	<!--禁止缩放-->
-	<link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="TipFrame 是一个轻量的静态打赏/赞助组件。">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TipFrame">
+  <meta property="og:description" content="一个轻量的静态打赏/赞助组件。">
+  <meta property="og:image" content="./images/like.svg">
+  <meta property="og:url" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TipFrame">
+  <meta name="twitter:description" content="一个轻量的静态打赏/赞助组件。">
+  <meta name="twitter:image" content="./images/like.svg">
+  <title>TipFrame</title>
+  <link rel="canonical" href="">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f172a'/%3E%3Cpath d='M32 48s-18-10.8-18-24a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 13.2-18 24-18 24Z' fill='%23f8fafc'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="./images/like.svg">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('tipframe-theme');
+        if (theme) {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch (error) {
+      }
+    }());
+  </script>
+  <link rel="preload" as="image" href="./images/alipay-qr.jpg">
+  <link rel="preload" as="image" href="./images/wechat-qr.jpg">
+  <link rel="stylesheet" href="./donate.css">
 </head>
 
 <body>
-	<a id="github" href="https://github.com/7fffan/donate/" target="_blank" class="pos-f tr3" title="Github"></a>
-	<a href="https://www.liesys.com/" target="_blank" style="position: fixed;">
-		<div id="DonateText" class="tr3">liesys.com</div>
-	</a>
-	<ul id="donateBox" class="list pos-f tr3">
-		<li id="PayPal">
-			<a href="https://www.paypal.me/7fffan" target="_blank">PayPal</a>
-		</li>
-		<li id="AliPay">AliPay</li>
-		<li id="WeChat">WeChat</li>
-	</ul>
-	<div id="QRBox" class="pos-f left-100">
-		<div id="MainBox"></div>
-	</div>
-	<script async src="./script.js"></script>
+  <main class="page-shell page-shell--buttons">
+    <button class="theme-toggle" type="button" aria-label="切换深浅色主题" aria-pressed="false">
+      <span class="theme-toggle__icon" aria-hidden="true"></span>
+      <span class="theme-toggle__label">深色模式</span>
+    </button>
+
+    <div class="page-copy" aria-label="打赏说明">
+      <p class="page-copy__eyebrow">TipFrame</p>
+      <h1>如果这个项目帮到了你</h1>
+      <p>可以用你习惯的方式支持一下维护。</p>
+    </div>
+
+    <section id="methods" class="payment-grid" role="group" aria-label="支付方式">
+      <a class="payment-item payment-button--paypal" href="#" target="_blank" rel="noreferrer noopener" aria-label="PayPal 捐赠 / PayPal donate" data-method="paypal">
+        <span class="payment-icon" aria-hidden="true"></span>
+        <span class="payment-label">PayPal</span>
+      </a>
+
+      <button class="payment-item payment-item--button payment-button--alipay" type="button" data-method="alipay" aria-label="支付宝 / Alipay 二维码">
+        <span class="payment-icon" aria-hidden="true"></span>
+        <span class="payment-label">Alipay</span>
+      </button>
+
+      <button class="payment-item payment-item--button payment-button--wechat" type="button" data-method="wechat" aria-label="微信支付 / WeChat Pay 二维码">
+        <span class="payment-icon" aria-hidden="true"></span>
+        <span class="payment-label">WeChat</span>
+      </button>
+    </section>
+
+    <button class="embed-builder-toggle" type="button" aria-expanded="false" aria-controls="embed-builder">生成嵌入代码</button>
+
+    <section class="embed-builder" id="embed-builder" aria-label="生成嵌入代码" hidden>
+      <div class="embed-builder__header">
+        <p class="embed-builder__eyebrow">Embed</p>
+        <h2>生成嵌入代码</h2>
+      </div>
+      <div class="embed-builder__controls">
+        <label>主题
+          <select name="embed-theme">
+            <option value="light">浅色</option>
+            <option value="dark" selected>深色</option>
+          </select>
+        </label>
+        <label>模式
+          <select name="embed-type">
+            <option value="compact">紧凑</option>
+            <option value="full">完整</option>
+            <option value="card">卡片</option>
+          </select>
+        </label>
+        <label>样式
+          <select name="embed-style">
+            <option value="glass">玻璃拟态</option>
+            <option value="minimal" selected>极简</option>
+            <option value="mono">黑白极简</option>
+          </select>
+        </label>
+        <label>尺寸
+          <select name="embed-size">
+            <option value="sm">小</option>
+            <option value="md" selected>中</option>
+            <option value="lg">大</option>
+          </select>
+        </label>
+      </div>
+      <fieldset class="embed-builder__methods">
+        <legend>支付方式</legend>
+        <label><input type="checkbox" name="embed-methods" value="paypal" checked> PayPal</label>
+        <label><input type="checkbox" name="embed-methods" value="alipay" checked> Alipay</label>
+        <label><input type="checkbox" name="embed-methods" value="wechat" checked> WeChat</label>
+      </fieldset>
+      <textarea class="embed-builder__output" rows="5" readonly></textarea>
+      <button class="embed-builder__copy" type="button">复制代码</button>
+    </section>
+  </main>
+
+  <section class="qr-modal" aria-hidden="true" aria-label="二维码弹窗">
+    <button class="qr-modal__backdrop" type="button" aria-label="关闭二维码"></button>
+    <div class="qr-modal__card" role="dialog" aria-modal="true" aria-labelledby="qr-title" aria-describedby="qr-hint qr-caption">
+      <div class="qr-modal__bar">
+        <span class="qr-modal__handle"></span>
+      </div>
+      <div class="qr-modal__body">
+        <div>
+          <p class="qr-modal__eyebrow">扫码支持</p>
+          <h2 id="qr-title">二维码</h2>
+        </div>
+        <button class="qr-modal__close" type="button" aria-label="关闭二维码">关闭</button>
+      </div>
+      <p class="qr-modal__hint" id="qr-hint">长按可保存二维码</p>
+      <div class="qr-modal__skeleton" aria-hidden="true"></div>
+      <img class="qr-modal__image" alt="二维码" src="" loading="lazy">
+      <p class="qr-modal__status" aria-live="polite"></p>
+      <p class="qr-modal__caption" id="qr-caption">点击空白处或按 Esc 键关闭</p>
+    </div>
+  </section>
+
+  <script src="./config.js"></script>
+  <script src="./donate.js" defer></script>
 </body>
 
 </html>
