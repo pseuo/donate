@@ -19,6 +19,6 @@ All notable changes to TipFrame are documented in this file.
 
 ## 1.0.0
 
-- Initial static donation widget based on `donate-page`.
+- Initial static donation widget.
 - Supports PayPal, Alipay QR code, and WeChat Pay QR code.
 - Includes responsive layout, QR modal, and iframe-friendly rendering.
