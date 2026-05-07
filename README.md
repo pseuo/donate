@@ -1,6 +1,7 @@
 # TipFrame
 
-TipFrame：一个轻量的静态打赏/赞助组件，支持 PayPal、支付宝和微信支付，可直接部署或通过 `iframe` 嵌入到网站中。
+一个轻量的静态打赏/赞助组件，支持 PayPal、支付宝和微信支付，可直接部署或通过 `iframe` 嵌入到网站
+
 
 ## 功能特点
 
@@ -298,23 +299,6 @@ window.addEventListener('message', function (event) {
 - `examples/vertical.html`：纵向按钮布局示例。
 - `examples/url-lock.html`：禁用 URL 覆盖示例。
 
-## 本地预览
-
-项目是纯静态文件，可以直接双击 `index.html` 打开。为了避免部分浏览器对本地文件路径的限制，也可以在项目目录启动一个本地静态服务。
-
-如果已安装 Node.js：
-
-```bash
-npx serve .
-```
-
-如果已安装 Python：
-
-```bash
-python -m http.server 8000
-```
-
-然后访问 `http://localhost:8000/`。
 
 ## GitHub Pages 部署
 
@@ -350,12 +334,6 @@ python -m http.server 8000
 - 修改二维码弹窗尺寸：编辑 `donate.css` 中 `.qr-modal__card` 和 `.qr-modal__image`。
 - 修改主题色和深色模式：编辑 `donate.css` 顶部的变量和 `html[data-theme='dark']` 区块。
 
-## 注意事项
-
-- 请不要提交真实个人收款码到公开仓库，除非你确认可以公开展示。
-- 如果页面通过 HTTPS 站点嵌入，建议打赏页也使用 HTTPS，避免浏览器拦截或安全提示。
-- `iframe` 高度需要根据你的主题样式微调，避免出现滚动条或内容裁切。
-- 如果需要公开分享，在 `config.js` 中配置 `page.shareImage`，它会同步到 Open Graph / Twitter 分享图。
 
 ## CSP 建议
 
