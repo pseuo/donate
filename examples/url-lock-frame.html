@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>URL 覆盖禁用演示</title>
+  <link rel="stylesheet" href="../donate.css">
+</head>
+<body>
+  <main class="page-shell page-shell--buttons">
+    <div class="page-copy" aria-label="打赏说明">
+      <p class="page-copy__eyebrow">TipFrame</p>
+      <h1>URL 覆盖禁用演示</h1>
+      <p>这个页面强制使用 lockedDemo profile，并禁止 URL 覆盖标题、文案和支付方式。</p>
+    </div>
+
+    <section id="methods" class="payment-grid" role="group" aria-label="支付方式">
+      <a class="payment-item payment-button--paypal" href="#" target="_blank" rel="noreferrer noopener" data-method="paypal">
+        <span class="payment-icon" aria-hidden="true"></span>
+        <span class="payment-label">PayPal</span>
+      </a>
+      <button class="payment-item payment-item--button payment-button--alipay" type="button" data-method="alipay">
+        <span class="payment-icon" aria-hidden="true"></span>
+        <span class="payment-label">Alipay</span>
+      </button>
+      <button class="payment-item payment-item--button payment-button--wechat" type="button" data-method="wechat">
+        <span class="payment-icon" aria-hidden="true"></span>
+        <span class="payment-label">WeChat</span>
+      </button>
+    </section>
+  </main>
+
+  <section class="qr-modal" aria-hidden="true" aria-label="二维码弹窗">
+    <button class="qr-modal__backdrop" type="button" aria-label="关闭二维码"></button>
+    <div class="qr-modal__card" role="dialog" aria-modal="true" aria-labelledby="qr-title" aria-describedby="qr-hint qr-caption">
+      <div class="qr-modal__bar">
+        <span class="qr-modal__handle"></span>
+      </div>
+      <div class="qr-modal__body">
+        <div>
+          <p class="qr-modal__eyebrow">扫码支持</p>
+          <h2 id="qr-title">二维码</h2>
+        </div>
+        <button class="qr-modal__close" type="button" aria-label="关闭二维码">关闭</button>
+      </div>
+      <p class="qr-modal__hint" id="qr-hint">长按可保存二维码</p>
+      <div class="qr-modal__skeleton" aria-hidden="true"></div>
+      <img class="qr-modal__image" alt="二维码" src="" loading="lazy">
+      <p class="qr-modal__status" aria-live="polite"></p>
+      <p class="qr-modal__caption" id="qr-caption">点击空白处或按 Esc 键关闭</p>
+    </div>
+  </section>
+
+  <script src="../config.js"></script>
+  <script>
+    window.TipFrameConfig.security = {
+      allowUrlOverrides: false,
+      lockedProfile: 'lockedDemo'
+    };
+  </script>
+  <script src="../donate.js" defer></script>
+</body>
+</html>

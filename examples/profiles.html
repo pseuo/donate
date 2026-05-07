@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TipFrame Profile Examples</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(960px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    section {
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>多收款人 Profile 示例</h1>
+      <p>通过 <code>?profile=projectA</code> 和 <code>?profile=projectB</code> 使用不同项目配置。</p>
+    </header>
+
+    <section>
+      <h2>Project A</h2>
+      <div data-tipframe data-src="../index.html" data-profile="projectA" data-type="card"></div>
+    </section>
+
+    <section>
+      <h2>Project B</h2>
+      <div data-tipframe data-src="../index.html" data-profile="projectB" data-type="card" data-theme="dark"></div>
+    </section>
+  </main>
+
+  <script src="../embed.js"></script>
+</body>
+</html>

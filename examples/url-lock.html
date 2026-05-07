@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TipFrame URL Lock Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>URL 覆盖禁用示例</h1>
+    <p>这个示例通过专用页面锁定配置，并尝试用 URL 修改标题和支付方式。配置会保留锁定值。</p>
+    <iframe
+      data-tipframe-src="./url-lock-frame.html?title=这段标题不会生效&methods=paypal&type=card"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      scrolling="no"
+      frameborder="0"
+      style="width:100%; min-height:240px; border:0; overflow:hidden;">
+    </iframe>
+  </main>
+
+  <script>
+    (function () {
+      var iframe = document.querySelector('iframe');
+      iframe.src = new URL(iframe.getAttribute('data-tipframe-src'), window.location.href).toString();
+    }());
+
+    window.addEventListener('message', function (event) {
+      if (!event.data || event.data.type !== 'tipframe:resize') return;
+
+      var iframe = document.querySelector('iframe');
+      if (iframe) {
+        iframe.style.height = event.data.height + 'px';
+      }
+    });
+  </script>
+</body>
+</html>

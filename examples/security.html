@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TipFrame Sandbox Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 90px;
+      border: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Sandbox 安全嵌入示例</h1>
+    <p>这个示例使用 <code>sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"</code> 限制 iframe 权限。</p>
+
+    <iframe
+      data-tipframe-src="../index.html?embed=1&type=compact&theme=dark&style=minimal&methods=wechat"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      scrolling="no"
+      frameborder="0">
+    </iframe>
+  </main>
+
+  <script>
+    (function () {
+      var iframe = document.querySelector('iframe');
+      var src = iframe.getAttribute('data-tipframe-src');
+
+      iframe.src = new URL(src, window.location.href).toString();
+    }());
+
+    window.addEventListener('message', function (event) {
+      if (!event.data || event.data.type !== 'tipframe:resize') return;
+
+      var iframe = document.querySelector('iframe');
+      if (iframe) {
+        iframe.style.height = event.data.height + 'px';
+      }
+    });
+  </script>
+</body>
+</html>

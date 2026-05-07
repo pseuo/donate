@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TipFrame Vertical Layout Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(360px, 100%);
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>纵向布局示例</h1>
+    <p>适合窄侧边栏或移动端卡片。</p>
+    <div data-tipframe data-src="../index.html" data-type="card" data-layout="vertical" data-style="minimal"></div>
+  </main>
+
+  <script src="../embed.js"></script>
+</body>
+</html>

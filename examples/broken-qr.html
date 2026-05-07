@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TipFrame Broken QR Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>二维码错误状态示例</h1>
+    <p>这个示例把微信二维码指向不存在的图片，用于观察按钮自动禁用效果。</p>
+    <div data-tipframe data-src="../index.html" data-profile="brokenQr" data-type="card"></div>
+  </main>
+  <script src="../embed.js"></script>
+</body>
+</html>

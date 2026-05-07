@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TipFrame Embed Examples</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(960px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    section {
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 4px;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>TipFrame 嵌入示例</h1>
+      <p>这个页面展示 `embed.js` 的多实例用法。</p>
+    </header>
+
+    <section>
+      <h2>默认实例</h2>
+      <div data-tipframe data-src="../index.html"></div>
+    </section>
+
+    <section>
+      <h2>只显示微信</h2>
+      <div data-tipframe data-src="../index.html" data-methods="wechat" data-type="compact"></div>
+    </section>
+
+    <section>
+      <h2>卡片模式</h2>
+      <div data-tipframe data-src="../index.html" data-type="card" data-theme="dark" data-methods="paypal,wechat"></div>
+    </section>
+
+    <section>
+      <h2>极简模式</h2>
+      <div data-tipframe data-src="../index.html" data-style="minimal" data-size="sm" data-motion="0" data-methods="wechat,paypal"></div>
+    </section>
+  </main>
+
+  <script src="../embed.js"></script>
+</body>
+</html>
