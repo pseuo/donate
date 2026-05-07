@@ -1,7 +1,6 @@
 # TipFrame
 
-一个轻量的静态打赏/赞助组件，支持 PayPal、支付宝和微信支付，可直接部署或通过 `iframe` 嵌入到网站
-
+TipFrame：一个轻量的静态打赏/赞助组件，支持 PayPal、支付宝和微信支付，可直接部署或通过 `iframe` 嵌入到网站中。
 
 ## 功能特点
 
@@ -205,7 +204,7 @@ index.html?profile=projectA
 
 ```html
 <iframe
-  src="https://example.com/donate/"
+  src="https://example.com/"
   style="overflow:hidden; border:0; min-height:240px; width:100%;"
   sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
   frameborder="0"
@@ -219,7 +218,7 @@ index.html?profile=projectA
 
 ```html
 <iframe
-  src="https://example.com/donate/?embed=1&type=full"
+  src="https://example.com/?embed=1&type=full"
   style="overflow:hidden; border:0; min-height:240px; width:100%;"
   sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
   frameborder="0"
@@ -246,7 +245,7 @@ window.addEventListener('message', function (event) {
 
 ```html
 <div data-tipframe></div>
-<script src="https://example.com/donate/embed.js"></script>
+<script src="https://example.com/embed.js"></script>
 ```
 
 `embed.js` 会自动创建 iframe、追加 `embed=1` 参数，并监听 `tipframe:resize` 自动调整高度。
@@ -256,7 +255,7 @@ window.addEventListener('message', function (event) {
 ```html
 <div data-tipframe></div>
 <script
-  src="https://example.com/donate/embed.js"
+  src="https://example.com/embed.js"
   data-theme="dark"
   data-methods="paypal,wechat"
   data-type="compact"
@@ -275,7 +274,7 @@ window.addEventListener('message', function (event) {
 ```html
 <div data-tipframe data-methods="paypal,wechat"></div>
 <div data-tipframe data-methods="wechat" data-type="card"></div>
-<script src="https://example.com/donate/embed.js"></script>
+<script src="https://example.com/embed.js"></script>
 ```
 
 如果 `embed.js` 和 `index.html` 不在同一目录，可以手动指定页面地址：
@@ -284,7 +283,7 @@ window.addEventListener('message', function (event) {
 <div data-tipframe></div>
 <script
   src="https://cdn.example.com/tipframe/embed.js"
-  data-src="https://example.com/donate/"
+  data-src="https://example.com/"
   data-methods="wechat">
 </script>
 ```
@@ -299,6 +298,23 @@ window.addEventListener('message', function (event) {
 - `examples/vertical.html`：纵向按钮布局示例。
 - `examples/url-lock.html`：禁用 URL 覆盖示例。
 
+## 本地预览
+
+项目是纯静态文件，可以直接双击 `index.html` 打开。为了避免部分浏览器对本地文件路径的限制，也可以在项目目录启动一个本地静态服务。
+
+如果已安装 Node.js：
+
+```bash
+npx serve .
+```
+
+如果已安装 Python：
+
+```bash
+python -m http.server 8000
+```
+
+然后访问 `http://localhost:8000/`。
 
 ## GitHub Pages 部署
 
@@ -334,6 +350,12 @@ window.addEventListener('message', function (event) {
 - 修改二维码弹窗尺寸：编辑 `donate.css` 中 `.qr-modal__card` 和 `.qr-modal__image`。
 - 修改主题色和深色模式：编辑 `donate.css` 顶部的变量和 `html[data-theme='dark']` 区块。
 
+## 注意事项
+
+- 请不要提交真实个人收款码到公开仓库，除非你确认可以公开展示。
+- 如果页面通过 HTTPS 站点嵌入，建议打赏页也使用 HTTPS，避免浏览器拦截或安全提示。
+- `iframe` 高度需要根据你的主题样式微调，避免出现滚动条或内容裁切。
+- 如果需要公开分享，在 `config.js` 中配置 `page.shareImage`，它会同步到 Open Graph / Twitter 分享图。
 
 ## CSP 建议
 

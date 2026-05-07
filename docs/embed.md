@@ -4,7 +4,7 @@
 
 ```html
 <iframe
-	src="https://example.com/donate/?embed=1&type=compact"
+	src="https://example.com/?embed=1&type=compact"
 	style="overflow:hidden; border:0; min-height:90px; width:100%;"
 	sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
 	frameborder="0"
@@ -29,7 +29,7 @@ window.addEventListener('message', function (event) {
 
 ```html
 <div data-tipframe data-methods="wechat" data-type="card"></div>
-<script src="https://example.com/donate/embed.js"></script>
+<script src="https://example.com/embed.js"></script>
 ```
 
 Multiple `[data-tipframe]` containers are supported.
