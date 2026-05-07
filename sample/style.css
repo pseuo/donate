@@ -1,0 +1,314 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* background: #5CC9F5; */
+    line-height: 1.6rem;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+* {
+    box-sizing: border-box;
+}
+img {border-width: 0;}
+a{
+	color: #000;
+	text-decoration: none;
+	outline:none;
+	border:none;
+}
+.list, .list li, .list-left li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.pos-f {
+	position: fixed;
+}
+.left-100 {
+	width: 100%;
+    height: 100%;
+    float: left;
+}
+.blur {
+	-webkit-filter: blur(3px);
+	filter: blur(3px);
+}
+.tr3, .list li {
+	transition: all .3s;
+}
+.hidden {
+    display: none;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.click-cursor, .icon-donate, .list li {
+    cursor: pointer;
+}
+#drinks-box .opacity-show {
+    opacity: 1;
+}
+#drinks-box {
+    width: 320px;
+    height: 240px;
+	text-align: center;
+	left: calc(50% - 160px);
+	top: calc(50% - 120px);
+    position: fixed;
+}
+#drinks-icons {
+    background: no-repeat center center url(images/text.png);
+}
+.drinks-button>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+	transition: all 0.3s;
+	transform-style: preserve-3d;
+    transform-origin: center center;
+}
+.icon-donate {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+	left: calc(50% - 32px);
+	top: calc(50% - 32px);
+}
+.icon-donate img {
+    max-width: 64px;
+    max-height: 64px;
+}
+#drinks-button-box {
+    display: none;
+    opacity: 0;
+    transform: scale(1.3,1.3);
+}
+#drinks-button-bg {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 100px;
+    opacity: 0;
+}
+#donate-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    top: calc(50% - 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 210px;
+    height: 28px;
+    border-radius: 6px;
+    background-color: #62cdff;
+    box-shadow: 0 10px 20px 1px rgba(103, 207, 248, 0.5);
+}
+#donate-buttons a, #github-box a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+li[id$="_donate"] {
+    position: relative;
+    flex: 0 0 70px;
+    width: 70px;
+    height: 28px;
+    overflow: hidden;
+	cursor: pointer;
+	background: no-repeat center center;
+    background-size: 45px;
+    text-align: center;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+li[id$="_donate"]:focus-visible, #paypal_donate a:focus-visible, .icon-donate:focus-visible, #drinks-qrcode:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+li[id$="_donate"]::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: calc(50% - 5px);
+    height: 0;
+    width: 0;
+    opacity: 0;
+	border: 5px solid #fff;
+	border-color: #fff transparent transparent transparent;
+    transition: all .3s;
+}
+li[id$="_donate"]:hover::after {
+    opacity: 1;
+    top: 0px;
+}
+#github-box {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: calc(50% - 16px);
+    background: no-repeat center center url(images/github.svg);
+    background-size: contain;
+    right: 72px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    transform: rotatez(20deg );
+    opacity: 0;
+    transition: all .3s ease-out;
+}
+#drinks-button-box:hover #github-box, #drinks-button-box.Mobile #github-box {
+    top: calc(50% - 40px);
+    right: 64px;
+    transform: rotatez(5deg );
+    opacity: 0.8;
+}
+#paypal_donate {
+    background-image: url(images/paypal.svg);
+}
+
+#alipay_donate {
+    background-image: url(images/alipay.svg);
+}
+#wechat_donate {
+    background-image: url(images/wechat.svg);
+}
+#drinks-qrcodes {
+    display: none;
+}
+#drinks-qrcode {
+    position: absolute;
+    top: calc(50% - 90px);
+    left: calc(50% - 90px);
+    width: 180px;
+    height: 180px;
+	background: #fff no-repeat center center url(images/wechat-qr.png);
+    background-size: 160px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(103, 207, 248, 0.5);
+}
+
+@media (max-width: 360px) {
+    #drinks-box {
+        width: min(280px, calc(100vw - 32px));
+        height: 260px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #donate-buttons {
+        top: calc(50% - 60px);
+        width: 86px;
+        height: auto;
+        flex-direction: column;
+        border-radius: 8px;
+    }
+
+    li[id$="_donate"] {
+        flex-basis: 40px;
+        width: 86px;
+        height: 40px;
+        background-size: 48px;
+    }
+
+    li[id$="_donate"]::after {
+        display: none;
+    }
+
+    #drinks-qrcode {
+        top: calc(50% - 82px);
+        left: calc(50% - 82px);
+        width: 164px;
+        height: 164px;
+        background-size: 144px;
+    }
+}
+
+/* 动画 */
+#drinks-icons, #drinks-button-box {filter: blur(0px);}
+.page-open-animation>#drinks-icons {
+    animation-name: pageOpen;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.2, 0.9, 0.2, 1);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+.donate-animation-1>#drinks-icons, .donate-animation-4>#drinks-icons,.donate-animation-3>#drinks-button-box {
+    transform: scale(0.7,0.7);
+    filter: blur(2px);
+    display: block;
+    opacity: 1;
+}
+.donate-animation-1>#drinks-button-box,.donate-animation-4>#drinks-button-box,.donate-animation-3>#drinks-qrcodes {
+    display: block;
+    opacity: 1;
+    transform: scale(1,1);
+}
+.donate-animation-2>#drinks-button-box,.donate-animation-4>#drinks-qrcodes, .hideBox {
+    display: block;
+    transform: scale(1,1);
+    animation-name:hideBox;
+    animation-duration:0.3s;
+    animation-timing-function:ease-in-out;
+    animation-iteration-count:1;
+    animation-fill-mode:forwards;
+}
+
+.donate-animation-3>#drinks-icons {
+    transform: scale(0.4,0.4);
+    filter: blur(2px);
+}
+.showBox {
+    animation-name:showBox;
+    animation-duration:0.3s;
+    animation-timing-function:ease-in-out;
+    animation-iteration-count:1;
+    animation-fill-mode:forwards;
+}
+@keyframes showBox {
+	from {
+        opacity: 0;
+        transform: scale(1.3,1.3);
+	}
+	to {
+        opacity: 1;
+        transform: scale(1,1);
+	}
+}
+@keyframes hideBox {
+	from {
+        opacity: 1;
+        transform: scale(1,1);
+	}
+	to {
+        opacity: 0;
+        transform: scale(1.3,1.3);
+	}
+}
+@keyframes pageOpen {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.9,0.9);
+        filter: blur(3px);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.04,1.04);
+        filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1,1);
+        filter: blur(0px);
+    }
+}

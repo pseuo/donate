@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex">
+    <title>TipFrame</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="drinks-box" aria-label="Donation widget">
+        <div id="drinks-box-s" class="drinks-button left-100 page-open-animation">
+            <div id="drinks-icons" class="left-100 tr3">
+                <div id="coffee-donate" class="icon-donate" role="button" tabindex="0" aria-label="Open donation buttons"><img src="images/coffee.png" alt="coffee"></div>
+            </div>
+            <div id="drinks-button-box" class="tr3 left-100">
+                <div id="drinks-button-bg" class="left-100"></div>
+                <div id="github-box" aria-label="Open project GitHub"><a href="https://github.com/Kaiyuan/donate-page/" target="_blank" rel="noopener noreferrer">Github</a></div>
+                <ul id="donate-buttons" class="list tr3">
+                    <li id="paypal_donate"><a href="https://www.paypal.me/KaiyuanXie" target="_blank" rel="noopener noreferrer" aria-label="Open PayPal donation link">Paypal</a></li>
+                    <li id="alipay_donate" class="donate-button" tabindex="0" role="button" aria-label="Show AliPay QR code">AliPay</li>
+                    <li id="wechat_donate" class="donate-button" tabindex="0" role="button" aria-label="Show WeChat QR code">WeChat</li>
+                </ul>
+            </div>
+            <div id="drinks-qrcodes" class="left-100 tr3">
+                <p class="sr-only">QR code preview. Press Escape or activate the QR code to close.</p>
+                <div id="drinks-qrcode" role="button" tabindex="0" aria-label="Close QR code preview"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
